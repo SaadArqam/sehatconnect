@@ -1,6 +1,7 @@
 
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './App.css';
 
 function App() {
   const [showPopup, setShowPopup] = useState(false);
@@ -42,41 +43,136 @@ function App() {
   return (
     <>
       <div
+        className="card"
         style={{
-          border: "2px solid black",
-          borderRadius: "10%",
+          background: "linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(249, 250, 251, 0.9))",
+          boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+          borderRadius: "24px",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          padding: "20px",
-          maxWidth: "300px",
-          margin: "20px auto"
+          padding: "32px",
+          maxWidth: "400px",
+          margin: "40px auto",
+          transition: "all 0.3s ease"
         }}
       >
-        <img 
-          src="/avatar.png" 
-          style={{ width: "100px", height: "100px", borderRadius: "50%" }} 
-          alt="avatar"
-        />
-        <h1>Name: Rames</h1>
-        <h2>Blood Group: B+</h2>
-        <h2>Mob no: 1234567890</h2>
-        <h2>Address: house no-20 lane 2, Kerela</h2>
-        <button onClick={handleViewHistory}>View Medical History</button>
-        <button onClick={handleUpdateRecord}>Update Record</button>
+        <div
+          style={{
+            background: "linear-gradient(145deg, #6366f1, #4f46e5)",
+            padding: "8px",
+            borderRadius: "50%",
+            marginBottom: "24px",
+            boxShadow: "0 10px 15px -3px rgba(99, 102, 241, 0.3)"
+          }}
+        >
+          <img 
+            src="/avatar.png" 
+            style={{ 
+              width: "120px", 
+              height: "120px", 
+              borderRadius: "50%",
+              border: "4px solid white"
+            }} 
+            alt="avatar"
+          />
+        </div>
+        <h1 style={{ 
+          color: "#1f2937", 
+          fontSize: "2.5rem", 
+          marginBottom: "24px",
+          fontWeight: "700",
+          letterSpacing: "-0.025em",
+          lineHeight: "1.2"
+        }}>Rames</h1>
+        <div style={{
+          background: "#f3f4f6",
+          padding: "24px",
+          borderRadius: "16px",
+          width: "100%",
+          marginBottom: "24px"
+        }}>
+          <div style={{ 
+            display: "flex", 
+            alignItems: "center", 
+            marginBottom: "12px",
+            color: "#4b5563"
+          }}>
+            <span style={{ fontWeight: "600", marginRight: "8px" }}>Blood Group:</span>
+            <span>B+</span>
+          </div>
+          <div style={{ 
+            display: "flex", 
+            alignItems: "center", 
+            marginBottom: "12px",
+            color: "#4b5563"
+          }}>
+            <span style={{ fontWeight: "600", marginRight: "8px" }}>Mobile:</span>
+            <span>1234567890</span>
+          </div>
+          <div style={{ 
+            display: "flex", 
+            alignItems: "center",
+            color: "#4b5563"
+          }}>
+            <span style={{ fontWeight: "600", marginRight: "8px" }}>Address:</span>
+            <span>Gotham city,Kerela</span>
+          </div>
+        </div>
+        <div style={{ display: "flex", gap: "16px" }}>
+          <button 
+            onClick={handleViewHistory}
+            style={{
+              backgroundColor: "#4f46e5",
+              color: "white",
+              padding: "12px 24px",
+              borderRadius: "12px",
+              border: "none",
+              cursor: "pointer",
+              fontWeight: "600",
+              transition: "all 0.2s ease",
+              boxShadow: "0 4px 6px -1px rgba(79, 70, 229, 0.2)",
+              ":hover": {
+                backgroundColor: "#4338ca",
+                transform: "translateY(-2px)"
+              }
+            }}
+          >
+            View Medical History
+          </button>
+          <button 
+            onClick={handleUpdateRecord}
+            style={{
+              backgroundColor: "#fff",
+              color: "#4f46e5",
+              padding: "12px 24px",
+              borderRadius: "12px",
+              border: "2px solid #4f46e5",
+              cursor: "pointer",
+              fontWeight: "600",
+              transition: "all 0.2s ease",
+              ":hover": {
+                backgroundColor: "#f3f4f6"
+              }
+            }}
+          >
+            Update Record
+          </button>
+        </div>
       </div>
 
       {/* Popup Form */}
       {showPopup && (
         <div
+          className="popup-overlay"
           style={{
             position: 'fixed',
             top: 0,
             left: 0,
             width: '100%',
             height: '100%',
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            backgroundColor: 'rgba(0, 0, 0, 0.3)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -84,44 +180,63 @@ function App() {
           }}
         >
           <div
+            className="popup-content card"
             style={{
-              backgroundColor: 'white',
-              padding: '30px',
-              borderRadius: '10px',
-              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-              minWidth: '300px',
-              textAlign: 'center'
+              backgroundColor: 'rgba(255, 255, 255, 0.95)',
+              padding: '40px',
+              borderRadius: '24px',
+              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+              minWidth: '400px',
+              textAlign: 'center',
+              animation: 'fadeIn 0.3s ease-out'
             }}
           >
-            <h3>{popupType === 'history' ? 'Access Medical History' : 'Update Medical Record'}</h3>
-            <label style={{ display: 'block', marginBottom: '10px', fontWeight: 'bold' }}>
+            <h3 style={{
+              fontSize: '1.8rem',
+              color: '#1f2937',
+              marginBottom: '24px',
+              fontWeight: '600'
+            }}>
+              {popupType === 'history' ? 'Access Medical History' : 'Update Medical Record'}
+            </h3>
+            <label style={{ 
+              display: 'block', 
+              marginBottom: '12px', 
+              fontWeight: '500',
+              color: '#4b5563',
+              fontSize: '1.1rem'
+            }}>
               Enter your license ID:
             </label>
             <input
+              style={{
+                width: '100%',
+                padding: '12px 16px',
+                borderRadius: '12px',
+                border: '2px solid #e5e7eb',
+                fontSize: '1rem',
+                transition: 'all 0.2s ease',
+                outline: 'none',
+                marginBottom: '24px',
+              }}
               type="text"
               value={licenseId}
               onChange={(e) => setLicenseId(e.target.value)}
               placeholder="Enter license ID"
-              style={{
-                width: '100%',
-                padding: '10px',
-                marginBottom: '20px',
-                border: '1px solid #ccc',
-                borderRadius: '5px',
-                fontSize: '16px'
-              }}
             />
-            <div style={{ display: 'flex', gap: '10px', justifyContent: 'center' }}>
+            <div style={{ display: 'flex', gap: '16px', justifyContent: 'center' }}>
               <button
                 onClick={handleAccess}
                 style={{
-                  padding: '10px 20px',
-                  backgroundColor: '#007bff',
-                  color: 'white',
-                  border: 'none',
-                  borderRadius: '5px',
-                  cursor: 'pointer',
-                  fontSize: '16px'
+                  backgroundColor: "#4f46e5",
+                  color: "white",
+                  padding: "12px 24px",
+                  borderRadius: "12px",
+                  border: "none",
+                  cursor: "pointer",
+                  fontWeight: "600",
+                  transition: "all 0.2s ease",
+                  boxShadow: "0 4px 6px -1px rgba(79, 70, 229, 0.2)"
                 }}
               >
                 Access
@@ -129,13 +244,14 @@ function App() {
               <button
                 onClick={handleClosePopup}
                 style={{
-                  padding: '10px 20px',
-                  backgroundColor: '#6c757d',
-                  color: 'white',
-                  border: 'none',
-                  borderRadius: '5px',
-                  cursor: 'pointer',
-                  fontSize: '16px'
+                  backgroundColor: "#fff",
+                  color: "#4f46e5",
+                  padding: "12px 24px",
+                  borderRadius: "12px",
+                  border: "2px solid #4f46e5",
+                  cursor: "pointer",
+                  fontWeight: "600",
+                  transition: "all 0.2s ease"
                 }}
               >
                 Cancel
