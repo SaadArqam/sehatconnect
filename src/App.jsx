@@ -4,17 +4,28 @@ import { useNavigate } from 'react-router-dom';
 
 function App() {
   const [showPopup, setShowPopup] = useState(false);
+  const [popupType, setPopupType] = useState(''); // 'history' or 'update'
   const [licenseId, setLicenseId] = useState('');
   const navigate = useNavigate();
 
   const handleViewHistory = () => {
+    setPopupType('history');
+    setShowPopup(true);
+  };
+
+  const handleUpdateRecord = () => {
+    setPopupType('update');
     setShowPopup(true);
   };
 
   const handleAccess = () => {
     const correctLicenseId = "krushn.dayshmookh@newtonschool.co";
     if (licenseId.trim() === correctLicenseId) {
-      navigate('/history');
+      if (popupType === 'history') {
+        navigate('/history');
+      } else if (popupType === 'update') {
+        navigate('/update');
+      }
     } else if (licenseId.trim() === '') {
       alert('Please enter a license ID');
     } else {
@@ -25,6 +36,7 @@ function App() {
   const handleClosePopup = () => {
     setShowPopup(false);
     setLicenseId('');
+    setPopupType('');
   };
 
   return (
@@ -52,7 +64,7 @@ function App() {
         <h2>Mob no: 1234567890</h2>
         <h2>Address: house no-20 lane 2, Kerela</h2>
         <button onClick={handleViewHistory}>View Medical History</button>
-        <button>Update Record</button>
+        <button onClick={handleUpdateRecord}>Update Record</button>
       </div>
 
       {/* Popup Form */}
@@ -81,7 +93,7 @@ function App() {
               textAlign: 'center'
             }}
           >
-            <h3>Access Medical History</h3>
+            <h3>{popupType === 'history' ? 'Access Medical History' : 'Update Medical Record'}</h3>
             <label style={{ display: 'block', marginBottom: '10px', fontWeight: 'bold' }}>
               Enter your license ID:
             </label>

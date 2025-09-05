@@ -1,7 +1,9 @@
 import { useNavigate } from 'react-router-dom';
+import { useMedicalContext } from '../context/MedicalContext.jsx';
 
 function History() {
   const navigate = useNavigate();
+  const { medicalRecords } = useMedicalContext();
 
   const handleGoBack = () => {
     navigate('/');
@@ -40,47 +42,36 @@ function History() {
       </div>
 
       <div style={{ marginTop: '30px' }}>
-        <h3>Medical Records</h3>
-        <div style={{ 
-          border: '1px solid #ddd', 
-          borderRadius: '5px', 
-          padding: '15px',
-          marginBottom: '15px',
-          backgroundColor: 'white'
-        }}>
-          <h4>Visit 1 - General Checkup</h4>
-          <p><strong>Date:</strong> 2024-01-15</p>
-          <p><strong>Doctor:</strong> Dr. Smith</p>
-          <p><strong>Diagnosis:</strong> Normal health checkup</p>
-          <p><strong>Prescription:</strong> Multivitamins</p>
-        </div>
-
-        <div style={{ 
-          border: '1px solid #ddd', 
-          borderRadius: '5px', 
-          padding: '15px',
-          marginBottom: '15px',
-          backgroundColor: 'white'
-        }}>
-          <h4>Visit 2 - Blood Test</h4>
-          <p><strong>Date:</strong> 2024-02-10</p>
-          <p><strong>Doctor:</strong> Dr. Johnson</p>
-          <p><strong>Diagnosis:</strong> Routine blood work</p>
-          <p><strong>Results:</strong> All parameters within normal range</p>
-        </div>
-
-        <div style={{ 
-          border: '1px solid #ddd', 
-          borderRadius: '5px', 
-          padding: '15px',
-          backgroundColor: 'white'
-        }}>
-          <h4>Visit 3 - Follow-up</h4>
-          <p><strong>Date:</strong> 2024-03-05</p>
-          <p><strong>Doctor:</strong> Dr. Smith</p>
-          <p><strong>Diagnosis:</strong> Follow-up consultation</p>
-          <p><strong>Notes:</strong> Patient is in good health</p>
-        </div>
+        <h3>Medical Records ({medicalRecords.length} records)</h3>
+        {medicalRecords.length === 0 ? (
+          <div style={{ 
+            border: '1px solid #ddd', 
+            borderRadius: '5px', 
+            padding: '20px',
+            backgroundColor: 'white',
+            textAlign: 'center',
+            color: '#666'
+          }}>
+            <p>No medical records found.</p>
+          </div>
+        ) : (
+          medicalRecords.map((record, index) => (
+            <div key={record.id} style={{ 
+              border: '1px solid #ddd', 
+              borderRadius: '5px', 
+              padding: '15px',
+              marginBottom: '15px',
+              backgroundColor: 'white'
+            }}>
+              <h4>Visit {index + 1} - {record.diagnosis}</h4>
+              <p><strong>Date:</strong> {new Date(record.visitDate).toLocaleDateString()}</p>
+              <p><strong>Doctor:</strong> {record.doctorName}</p>
+              <p><strong>Diagnosis:</strong> {record.diagnosis}</p>
+              <p><strong>Prescription:</strong> {record.prescription}</p>
+              {record.notes && <p><strong>Notes:</strong> {record.notes}</p>}
+            </div>
+          ))
+        )}
       </div>
     </div>
   );
