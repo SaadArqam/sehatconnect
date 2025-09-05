@@ -85,7 +85,7 @@ function App() {
           fontWeight: "700",
           letterSpacing: "-0.025em",
           lineHeight: "1.2"
-        }}>Rames</h1>
+        }}>BATMAN</h1>
         <div style={{
           background: "#f3f4f6",
           padding: "24px",
