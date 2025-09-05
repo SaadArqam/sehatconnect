@@ -4,7 +4,11 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: './', // Ensure relative paths for deployment
+  base: '/', // Use absolute paths for Vercel
+  preview: {
+    // Configure preview server to handle client-side routing
+    historyApiFallback: true
+  },
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
