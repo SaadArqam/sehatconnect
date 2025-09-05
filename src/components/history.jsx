@@ -3,7 +3,7 @@ import { useMedicalContext } from '../hooks/useMedicalContext.js';
 
 function History() {
   const navigate = useNavigate();
-  const { medicalRecords } = useMedicalContext();
+  const { medicalRecords, patientDetails } = useMedicalContext();
 
   const handleGoBack = () => {
     navigate('/');
@@ -12,7 +12,7 @@ function History() {
   return (
     <div style={{ padding: '20px', maxWidth: '800px', margin: '0 auto' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
-        <h1>Medical History</h1>
+        <h1 style={{color:"white"}}>Medical History</h1>
         <div style={{ display: 'flex', gap: '10px' }}>
           <button 
             onClick={() => navigate('/update')}
@@ -51,9 +51,11 @@ function History() {
         padding: '20px',
         backgroundColor: '#f9f9f9'
       }}>
-        <h2>Patient: Ramesh</h2>
-        <p><strong>License ID:</strong> [Entered License ID]</p>
-        <p><strong>Blood Group:</strong> B+</p>
+        <h2>Patient: {patientDetails.name}</h2>
+        <p><strong>License ID:</strong> krushn.dayshmookh@newtonschool.co</p>
+        <p><strong>Blood Group:</strong> {patientDetails.bloodGroup}</p>
+        <p><strong>Mobile:</strong> {patientDetails.mobileNumber}</p>
+        <p><strong>Address:</strong> {patientDetails.address}</p>
         <p><strong>Last Updated:</strong> {new Date().toLocaleDateString()}</p>
       </div>
 

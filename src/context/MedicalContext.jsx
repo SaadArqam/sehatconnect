@@ -2,6 +2,14 @@ import { useState } from 'react';
 import { MedicalContext } from './MedicalContext.js';
 
 const MedicalProvider = ({ children }) => {
+  // Initial patient details
+  const [patientDetails, setPatientDetails] = useState({
+    name: 'batman',
+    bloodGroup: 'B+',
+    mobileNumber: '1234567890',
+    address: 'house no-20 lane 2, Kerela'
+  });
+
   // Initial medical records
   const [medicalRecords, setMedicalRecords] = useState([
     {
@@ -44,9 +52,18 @@ const MedicalProvider = ({ children }) => {
     setMedicalRecords(prev => [recordWithId, ...prev]); // Add new record at the beginning
   };
 
+  const updatePatientDetails = (updatedDetails) => {
+    setPatientDetails(prev => ({
+      ...prev,
+      ...updatedDetails
+    }));
+  };
+
   const value = {
+    patientDetails,
     medicalRecords,
-    addMedicalRecord
+    addMedicalRecord,
+    updatePatientDetails
   };
 
   return (

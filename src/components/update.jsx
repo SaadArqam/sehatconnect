@@ -4,7 +4,7 @@ import { useMedicalContext } from '../hooks/useMedicalContext.js';
 
 function Update() {
   const navigate = useNavigate();
-  const { addMedicalRecord } = useMedicalContext();
+  const { addMedicalRecord, patientDetails } = useMedicalContext();
   const [formData, setFormData] = useState({
     visitDate: '',
     doctorName: '',
@@ -45,7 +45,7 @@ function Update() {
   return (
     <div style={{ padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
-        <h1>Update Medical Record</h1>
+        <h1 style={{color:"white"}}>Update Medical Record</h1>
         <button 
           onClick={handleGoBack}
           style={{
@@ -69,9 +69,11 @@ function Update() {
         backgroundColor: '#f9f9f9',
         marginBottom: '20px'
       }}>
-        <h2>Patient: Ramesh</h2>
+        <h2>Patient: {patientDetails.name}</h2>
         <p><strong>License ID:</strong> krushn.dayshmookh@newtonschool.co</p>
-        <p><strong>Blood Group:</strong> B+</p>
+        <p><strong>Blood Group:</strong> {patientDetails.bloodGroup}</p>
+        <p><strong>Mobile:</strong> {patientDetails.mobileNumber}</p>
+        <p><strong>Address:</strong> {patientDetails.address}</p>
       </div>
 
       <form onSubmit={handleSubmit} style={{
@@ -94,10 +96,22 @@ function Update() {
             required
             style={{
               width: '100%',
-              padding: '10px',
-              border: '1px solid #ccc',
-              borderRadius: '5px',
-              fontSize: '16px'
+              padding: '12px',
+              border: '2px solid #e5e7eb',
+              borderRadius: '8px',
+              fontSize: '16px',
+              backgroundColor: 'white',
+              color: '#374151',
+              outline: 'none',
+              transition: 'border-color 0.2s ease',
+              boxSizing: 'border-box',
+              cursor: 'pointer'
+            }}
+            onFocus={(e) => {
+              e.target.style.borderColor = '#4f46e5';
+            }}
+            onBlur={(e) => {
+              e.target.style.borderColor = '#e5e7eb';
             }}
           />
         </div>
