@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useMedicalContext } from '../context/MedicalContext.jsx';
+import { useMedicalContext } from '../hooks/useMedicalContext.js';
 
 function History() {
   const navigate = useNavigate();

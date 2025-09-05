@@ -1,16 +1,7 @@
-import { createContext, useContext, useState } from 'react';
+import { useState } from 'react';
+import { MedicalContext } from './MedicalContext.js';
 
-const MedicalContext = createContext();
-
-export const useMedicalContext = () => {
-  const context = useContext(MedicalContext);
-  if (!context) {
-    throw new Error('useMedicalContext must be used within a MedicalProvider');
-  }
-  return context;
-};
-
-export const MedicalProvider = ({ children }) => {
+const MedicalProvider = ({ children }) => {
   // Initial medical records
   const [medicalRecords, setMedicalRecords] = useState([
     {
@@ -64,3 +55,5 @@ export const MedicalProvider = ({ children }) => {
     </MedicalContext.Provider>
   );
 };
+
+export { MedicalProvider };
