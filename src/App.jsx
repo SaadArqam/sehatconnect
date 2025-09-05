@@ -62,6 +62,7 @@ function App() {
   const handleEditSave = () => {
     updatePatientDetails(editForm);
     setIsEditing(false);
+    alert('Profile updated successfully! Changes are saved permanently.');
   };
 
   const handleEditCancel = () => {
