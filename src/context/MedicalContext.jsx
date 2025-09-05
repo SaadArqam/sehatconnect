@@ -1,0 +1,66 @@
+import { createContext, useContext, useState } from 'react';
+
+const MedicalContext = createContext();
+
+export const useMedicalContext = () => {
+  const context = useContext(MedicalContext);
+  if (!context) {
+    throw new Error('useMedicalContext must be used within a MedicalProvider');
+  }
+  return context;
+};
+
+export const MedicalProvider = ({ children }) => {
+  // Initial medical records
+  const [medicalRecords, setMedicalRecords] = useState([
+    {
+      id: 1,
+      visitDate: '2024-01-15',
+      doctorName: 'Dr. Smith',
+      diagnosis: 'Normal health checkup',
+      prescription: 'Multivitamins',
+      notes: 'Patient is in good health'
+    },
+    {
+      id: 2,
+      visitDate: '2024-02-10',
+      doctorName: 'Dr. Johnson',
+      diagnosis: 'Routine blood work',
+      prescription: 'None',
+      notes: 'All parameters within normal range'
+    },
+    {
+      id: 3,
+      visitDate: '2024-03-05',
+      doctorName: 'Dr. Smith',
+      diagnosis: 'Follow-up consultation',
+      prescription: 'None',
+      notes: 'Patient is in good health'
+    }
+  ]);
+
+  const addMedicalRecord = (newRecord) => {
+    const recordWithId = {
+      ...newRecord,
+      id: Date.now(), // Simple ID generation
+      visitDate: newRecord.visitDate,
+      doctorName: newRecord.doctorName,
+      diagnosis: newRecord.diagnosis,
+      prescription: newRecord.prescription || 'None',
+      notes: newRecord.notes || 'No additional notes'
+    };
+    
+    setMedicalRecords(prev => [recordWithId, ...prev]); // Add new record at the beginning
+  };
+
+  const value = {
+    medicalRecords,
+    addMedicalRecord
+  };
+
+  return (
+    <MedicalContext.Provider value={value}>
+      {children}
+    </MedicalContext.Provider>
+  );
+};
