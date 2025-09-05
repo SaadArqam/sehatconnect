@@ -47,7 +47,7 @@ function App() {
           style={{ width: "100px", height: "100px", borderRadius: "50%" }} 
           alt="avatar"
         />
-        <h1>Name: Ramesh</h1>
+        <h1>Name: Rames</h1>
         <h2>Blood Group: B+</h2>
         <h2>Mob no: 1234567890</h2>
         <h2>Address: house no-20 lane 2, Kerela</h2>
