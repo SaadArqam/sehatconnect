@@ -77,7 +77,7 @@ function App() {
   };
 
   return (
-    <>
+    <div className="container">
       <div
         className="card"
         style={{
@@ -91,7 +91,9 @@ function App() {
           padding: "32px",
           maxWidth: "400px",
           margin: "40px auto",
-          transition: "all 0.3s ease"
+          transition: "all 0.3s ease",
+          width: "100%",
+          boxSizing: "border-box"
         }}
       >
         <div
@@ -220,7 +222,7 @@ function App() {
             )}
           </div>
         </div>
-        <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", justifyContent: "center" }}>
+        <div className="button-group flex-container" style={{ display: "flex", gap: "16px", flexWrap: "wrap", justifyContent: "center" }}>
           {isEditing ? (
             <>
               <button 
@@ -335,8 +337,11 @@ function App() {
               borderRadius: '24px',
               boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
               minWidth: '400px',
+              maxWidth: '90vw',
+              width: '90vw',
               textAlign: 'center',
-              animation: 'fadeIn 0.3s ease-out'
+              animation: 'fadeIn 0.3s ease-out',
+              boxSizing: 'border-box'
             }}
           >
             <h3 style={{
@@ -372,7 +377,7 @@ function App() {
               onChange={(e) => setLicenseId(e.target.value)}
               placeholder="Enter license ID"
             />
-            <div style={{ display: 'flex', gap: '16px', justifyContent: 'center' }}>
+            <div className="button-group flex-container" style={{ display: 'flex', gap: '16px', justifyContent: 'center' }}>
               <button
                 onClick={handleAccess}
                 style={{
@@ -408,7 +413,7 @@ function App() {
           </div>
         </div>
       )}
-    </>
+    </div>
   )
 }
 

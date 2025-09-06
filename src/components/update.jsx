@@ -43,8 +43,8 @@ function Update() {
   };
 
   return (
-    <div style={{ padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
+    <div className="container" style={{ padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
+      <div className="flex-container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
         <h1 style={{color:"white"}}>Update Medical Record</h1>
         <button 
           onClick={handleGoBack}
@@ -76,7 +76,7 @@ function Update() {
         <p><strong>Address:</strong> {patientDetails.address}</p>
       </div>
 
-      <form onSubmit={handleSubmit} style={{
+      <form className="form-container" onSubmit={handleSubmit} style={{
         border: '1px solid #ddd',
         borderRadius: '10px',
         padding: '20px',
@@ -201,7 +201,7 @@ function Update() {
           />
         </div>
 
-        <div style={{ display: 'flex', gap: '10px', justifyContent: 'center' }}>
+        <div className="button-group flex-container" style={{ display: 'flex', gap: '10px', justifyContent: 'center' }}>
           <button
             type="submit"
             style={{
