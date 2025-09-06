@@ -92,8 +92,6 @@ const MedicalProvider = ({ children }) => {
 
   // Effect to handle initial data loading
   useEffect(() => {
-    // This effect runs when the component mounts
-    // Data is already loaded from localStorage in the useState initializers
     console.log('Medical data loaded from localStorage');
   }, []);
 
@@ -101,7 +99,6 @@ const MedicalProvider = ({ children }) => {
   const clearAllData = () => {
     localStorage.removeItem('patientDetails');
     localStorage.removeItem('medicalRecords');
-    // Reset to default values
     setPatientDetails({
       name: 'batman',
       bloodGroup: 'B+',
