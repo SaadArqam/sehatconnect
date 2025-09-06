@@ -7,7 +7,7 @@ const MedicalProvider = ({ children }) => {
     name: 'batman',
     bloodGroup: 'B+',
     mobileNumber: '1234567890',
-    address: 'Gotham City,Kerela'
+    address: 'Gotham City, Kerela'
   });
 
   // Initial medical records
