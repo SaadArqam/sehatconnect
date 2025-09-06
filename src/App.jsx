@@ -29,8 +29,11 @@ function App() {
   };
 
   const handleAccess = () => {
-    const correctLicenseId = "krushn.dayshmookh@newtonschool.co";
-    if (licenseId.trim() === correctLicenseId) {
+    const correctLicenseId1 = "krushn.dayshmookh@newtonschool.co";
+    const correctLicenseId2 = "adhyyan.awasthi@newtonschool.co";
+    if (licenseId.trim() === correctLicenseId1 || licenseId.trim() === correctLicenseId2) {
+      // Store the authenticated license ID
+      updatePatientDetails({ ...patientDetails, authenticatedLicenseId: licenseId.trim() });
       if (popupType === 'history') {
         navigate('/history');
       } else if (popupType === 'update') {

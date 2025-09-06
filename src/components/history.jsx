@@ -52,7 +52,7 @@ function History() {
         backgroundColor: '#f9f9f9'
       }}>
         <h2 style={{color: '#1f2937'}}>Patient: {patientDetails.name}</h2>
-        <p style={{color: '#1f2937'}}><strong>License ID:</strong> krushn.dayshmookh@newtonschool.co</p>
+        <p style={{color: '#1f2937'}}><strong>License ID:</strong> {patientDetails.authenticatedLicenseId}</p>
         <p style={{color: '#1f2937'}}><strong>Blood Group:</strong> {patientDetails.bloodGroup}</p>
         <p style={{color: '#1f2937'}}><strong>Mobile:</strong> {patientDetails.mobileNumber}</p>
         <p style={{color: '#1f2937'}}><strong>Address:</strong> {patientDetails.address}</p>

@@ -70,7 +70,7 @@ function Update() {
         marginBottom: '20px'
       }}>
         <h2>Patient: {patientDetails.name}</h2>
-        <p><strong>License ID:</strong> krushn.dayshmookh@newtonschool.co</p>
+        <p><strong>License ID:</strong> {patientDetails.authenticatedLicenseId}</p>
         <p><strong>Blood Group:</strong> {patientDetails.bloodGroup}</p>
         <p><strong>Mobile:</strong> {patientDetails.mobileNumber}</p>
         <p><strong>Address:</strong> {patientDetails.address}</p>
